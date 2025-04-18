@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eventify College</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden-section { display: none; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="bg-blue-100 py-4 px-6 flex justify-between items-center shadow">
+    <h1 class="text-2xl font-bold text-blue-600">Eventify College</h1>
+    <div>
+      <button onclick="showSection('login')" class="text-blue-600 hover:underline mr-3">Login</button>
+      <button onclick="showSection('register')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Register</button>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="p-6">
+    <header class="text-center mb-6">
+      <h2 class="text-4xl font-bold text-blue-700">Upcoming Events</h2>
+      <p class="text-gray-500">Get involved. Explore. Create memories.</p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- Event Cards -->
+      <div class="bg-blue-50 p-6 rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-xl font-bold text-blue-700">Hackathon 2025</h3>
+        <p>Innovate & code for 36 hours!</p>
+        <p class="text-blue-500 text-sm mt-2">📍 Campus Lab | 🗓️ July 15, 2025</p>
+        <button onclick="openModal('Hackathon 2025')" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Register</button>
+      </div>
+
+      <div class="bg-pink-50 p-6 rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-xl font-bold text-pink-700">UNIFEST</h3>
+        <p>Cultural fusion & creativity unleashed.</p>
+        <p class="text-pink-500 text-sm mt-2">📍 Main Auditorium | 🗓️ May 10, 2025</p>
+        <button onclick="openModal('UNIFEST')" class="mt-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Register</button>
+      </div>
+
+      <div class="bg-green-50 p-6 rounded-xl shadow hover:shadow-lg">
+        <h3 class="text-xl font-bold text-green-700">Game Jam</h3>
+        <p>Build a game in 48 hours!</p>
+        <p class="text-green-500 text-sm mt-2">📍 Tech Hall | 🗓️ June 1, 2025</p>
+        <button onclick="openModal('Game Jam')" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Register</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN SECTION -->
+  <section id="login" class="hidden-section flex items-center justify-center min-h-screen bg-blue-50">
+    <div class="bg-white p-8 rounded-xl shadow max-w-md w-full">
+      <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">Login</h2>
+      <input type="email" placeholder="Email" class="w-full mb-4 p-2 border rounded" />
+      <input type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded" />
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+      <p class="text-sm text-center mt-4">Don’t have an account? <button onclick="showSection('register')" class="text-blue-500 hover:underline">Register</button></p>
+    </div>
+  </section>
+
+  <!-- REGISTER SECTION -->
+  <section id="register" class="hidden-section flex items-center justify-center min-h-screen bg-pink-50">
+    <div class="bg-white p-8 rounded-xl shadow max-w-md w-full">
+      <h2 class="text-2xl font-bold text-pink-600 mb-6 text-center">Register</h2>
+      <input type="text" placeholder="Full Name" class="w-full mb-4 p-2 border rounded" />
+      <input type="email" placeholder="Email" class="w-full mb-4 p-2 border rounded" />
+      <input type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded" />
+      <button class="w-full bg-pink-600 text-white py-2 rounded hover:bg-pink-700">Register</button>
+      <p class="text-sm text-center mt-4">Already have an account? <button onclick="showSection('login')" class="text-pink-500 hover:underline">Login</button></p>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-xl w-full max-w-md text-center shadow-lg">
+      <h2 class="text-2xl font-bold text-blue-600 mb-4" id="modalTitle">Register</h2>
+      <input type="text" placeholder="Your Name" class="w-full mb-3 p-2 border rounded" />
+      <input type="email" placeholder="Email" class="w-full mb-3 p-2 border rounded" />
+      <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Submit</button>
+      <button onclick="closeModal()" class="mt-4 text-sm text-red-500 hover:underline">Cancel</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function openModal(eventName) {
+      document.getElementById('modalTitle').textContent = `Register for ${eventName}`;
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('flex');
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    function showSection(section) {
+      document.getElementById('home').classList.add('hidden-section');
+      document.getElementById('login').classList.add('hidden-section');
+      document.getElementById('register').classList.add('hidden-section');
+
+      document.getElementById(section).classList.remove('hidden-section');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
