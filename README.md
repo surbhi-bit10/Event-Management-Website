@@ -1,6 +1,5 @@
 # Event-Management-Website
-Developed a responsive and user-friendly website for managing events,enabling users to create, view, and register for events seamlessly.
-Implemented login/authentication, event listings, and an admin dashboard for managing registrations and content.Focused on intuitive UI/UX, secure data handling, and dynamic content display using PHP and MySQL.
-Tools & techniques: HTML, CSS, JavaScript, PHP, MySQL.
-🖥️ Backend → simple Node.js with Express
-🗃️ Data Storage → just a JSON file (for simplicity; can later upgrade to MongoDB)
+Designed a responsive and visually appealing front-end interface for managing college events.
+Features include event listings, user registration forms (UI only), and intuitive navigation.
+Technologies used: HTML, CSS, JavaScript
+Focused on clean UI/UX, light-themed aesthetics, and layout consistency across devices.
